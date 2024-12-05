@@ -1,0 +1,44 @@
+services:
+
+   # Serviço Backend: responsável pela API Rails
+  backend:
+    build:
+      context: ./devopscaseback
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - DATABASE_HOST=db
+      - DATABASE_PORT=5432
+      - DATABASE_USER=gabriel_pinheiro
+      - DATABASE_PASSWORD=casedevops123
+      - DATABASE_NAME=case
+      - RAILS_ENV=development
+    depends_on:
+      - db
+  
+   # Serviço Frontend: responsável pela aplicação React
+  frontend:
+    build:
+      context: ./devopscasefront
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+
+  # Serviço do Banco de Dados (PostgreSQL)
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: gabriel_pinheiro
+      POSTGRES_PASSWORD: casedevops123
+      POSTGRES_DB: case
+    ports:
+      - "5432:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+volumes:
+  
+  db_data:
