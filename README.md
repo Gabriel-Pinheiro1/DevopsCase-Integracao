@@ -80,7 +80,7 @@ O **Backend** é a camada lógica do sistema, onde as operações de processamen
 
 ### Integração via Docker
 
-A integração entre o **Frontend**, **Backend** e quaisquer outras dependências externas (como bancos de dados) é realizada utilizando o Docker. O arquivo `docker-compose.yml` define todos os containers necessários para o funcionamento do sistema, orquestrando tanto o Frontend quanto o Backend, além de outras dependências, permitindo que todos os serviços sejam executados simultaneamente em containers isolados.
+A integração entre o **Frontend**, **Backend** e quaisquer outras dependências externas (como bancos de dados) é realizada utilizando o Docker. O arquivo `docker-compose.yml` define todos os containers necessários para o funcionamento do sistema, permitindo que todos os serviços sejam executados simultaneamente em containers isolados.
 
 Cada serviço possui um **Dockerfile** específico:
 
@@ -92,8 +92,7 @@ Através do `docker-compose.yml`, o Docker pode construir e iniciar os container
 
 ### Comunicação entre Frontend e Backend
 
-Quando o usuário interage com o **Frontend**, ele faz chamadas para o **Backend** por meio de APIs. Essas APIs são expostas pelo Backend e respondem com os dados necessários para que a interface de usuário seja atualizada. O uso do Docker permite que o Frontend e Backend sejam facilmente configurados e gerenciados em containers separados, sem a necessidade de configuração manual para o ambiente de desenvolvimento.
-
+Quando o usuário interage com o Frontend, ele faz chamadas para o Backend por meio da API. Essa API, exposta pelo Backend, retorna os dados necessários para atualizar interface. Neste projeto, o Docker é utilizado para configurar e gerenciar o Frontend e o Backend em containers separados. Isso facilita a criação de ambientes isolados e consistentes, sem a necessidade de configurações manuais. A separação em containers garante que o Frontend e o Backend possam ser executados de forma independente, mas ainda assim se comuniquem de maneira eficiente, garantindo que a aplicação funcione corretamente em diferentes contextos.
 
 
 
